@@ -3,7 +3,7 @@
 
 import psycopg2
 
-# 1). Finds the 3 most popular articles of all time
+# 1. What are the most popular three articles of all time?
 sql_query_articles = """
                     SELECT articles.title, CAST(count(log.path) AS text)
                     FROM articles
@@ -14,7 +14,7 @@ sql_query_articles = """
                     LIMIT 3;
                     """
 
-# 2). Finds the 3 most popular authors.
+# 2. Who are the most popular article authors of all time? 
 sql_query_authors = """
                     SELECT authors.name, CAST(count(log.path) AS text)
                     FROM authors
@@ -27,7 +27,7 @@ sql_query_authors = """
                     LIMIT 3;
                     """
 
-# 3). On what days did more that 1% of requests led to errors?
+# 3. On which days did more than 1% of requests lead to errors?
 sql_query_errors = """
                    SELECT CAST(time::date AS text) as day,
                             CAST(ROUND(sum(case when status = '404 NOT FOUND'
