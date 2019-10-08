@@ -25,6 +25,7 @@ sql_popular_articles = """
     for (title, view) in cur.fetchall():
         print("    {} - {} views".format(title, view))
     print("-" * 70)
+    
 # 2. Who are the most popular article authors of all time? 
 sql_popular_authors = """
     SELECT article_view.name, SUM(article_view.view) AS author_view
@@ -37,7 +38,7 @@ sql_popular_authors = """
     for (name, view) in cur.fetchall():
         print("    {} - {} views".format(name, view))
     print("-" * 70)
-
+    
 
 # 3. On which days did more than 1% of requests lead to errors?
  sql_more_than_one_percent_errors = """
