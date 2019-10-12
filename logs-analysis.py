@@ -7,10 +7,10 @@ import psycopg2
 
 def main():
     # Connect to an existing database
-    conn = psycopg2.connect("dbname=news")
+    connect = psycopg2.connect("dbname=news")
 
     # Open a cursor to perform database operations
-    cur = conn.cursor()
+    cursor = connect.cursor()
 
 
 # 1. What are the most popular three articles of all time?
@@ -20,9 +20,9 @@ sql_popular_articles = """
       ORDER BY article_view.view DESC
       LIMIT 3;
     """
-    cur.execute(sql_popular_articles)
+    cursor.execute(sql_popular_articles)
     print("Most popular articles:")
-    for (title, view) in cur.fetchall():
+    for (title, view) in cursor.fetchall():
         print("    {} - {} views".format(title, view))
     print("-" * 70)
     
@@ -33,9 +33,9 @@ sql_popular_authors = """
     GROUP BY article_view.name
     ORDER BY author_view DESC;
     """
-    cur.execute(sql_popular_authors)
+    cursor.execute(sql_popular_authors)
     print("Most popular authors:")
-    for (name, view) in cur.fetchall():
+    for (name, view) in cursor.fetchall():
         print("    {} - {} views".format(name, view))
     print("-" * 70)
     
@@ -47,15 +47,15 @@ sql_popular_authors = """
     WHERE error_rate.percentage > 1
     ORDER BY error_rate.percentage DESC;
     """
-    cur.execute(sql_more_than_one_percent_errors)
+    cursor.execute(sql_more_than_one_percent_errors)
     print("Days with more than 1% errors:")
-    for (date, percentage) in cur.fetchall():
+    for (date, percentage) in cursor.fetchall():
         print("    {} - {}% errors".format(date, percentage))
     print("-" * 70)
 
     # Close communication with the database
-    cur.close()
-    conn.close()
+    cursor.close()
+    connent.close()
 
 if __name__ == "__main__":
     main()
