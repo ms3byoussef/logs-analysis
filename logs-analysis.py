@@ -4,7 +4,7 @@ import psycopg2
 DB_NAME = "news"
 
 
-db = psycopg2.connect(database=DBNAME)
+db = psycopg2.connect(database=DB_NAME)
 cursor = db.cursor() 
 
 
