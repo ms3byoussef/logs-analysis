@@ -1,9 +1,9 @@
-# SQL Logs Analysis Tool 
-An internal reporting tool for a newspaper website that determines: what are the most popular articles, who are the most popular authors, what percentage of requests returned errors and then prints out that information.
+#Log Analysis 
+## what is this?
 
-Runs in Vagrant's VM. 
+This is the frist project for the Udacity Full Stack Nanodegree. this a large data in SQL queries. The project is building an internal reporting tool for a newpaper site to discover what kind of articles the site's readers like,What are the most popular three articles of all time?,Who are the most popular article authors of all time?
 
-Part of Udacity's Introduction to Programming Nanodegree.
+ Udacity's Introduction to Programming Nanodegree.
 ### Installation
 Requires Udacity’s Linux-based virtual machine and associated news-website database.
 Instructions for installing the VM and data follow.
@@ -12,25 +12,22 @@ Instructions for installing the VM and data follow.
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * [Newsdata](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
 
-Note: install Vagrant into a different directory from VirtualBox.
-
-#### Set-up the VM:
-* Navigate to the Vagrant directory.
-* Set up the machine.
-* Log in.
-```
-cd /path/fsnd-virtual-machine/vagrant
-vagrant up
-vagrant ssh
-```
-* Outside the machine, place unzipped data file into the vagrant directory.
-* cd back into the vagrant directory
-``` cd /path/fsnd-virtual-machine/vagrant```
-* Load the dataset.
-```
-psql -d news -f newsdata.sql
-```
-
+#### Installing the dependencies and setting up the files:
+1. Install [Vagrant](https://www.vagrantup.com/)
+1. Install [VirtualBox](https://www.virtualbox.org/)
+1. Download the vagrant setup files from [Udacity's Github](https://github.com/udacity/fullstack-nanodegree-vm)
+These files configure the virtual machine and install all the tools needed to run this project.
+1. Download the database setup: [data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
+1. Unzip the data to get the newsdata.sql file.
+1. Put the newsdata.sql file into the vagrant directory
+1. Download this project: [log analysis](https://github.com/michellejl/log_analysis)
+1. Upzip as needed and copy all files into the vagrant directory into a folder called log_analysis
+#### Start the Virtual Machine:
+1. Open Terminal and navigate to the project folders we setup above.
+1. cd into the vagrant directory
+1. Run ``` vagrant up ``` to build the VM for the first time.
+1. Once it is built, run ``` vagrant ssh ``` to connect.
+1. cd into the correct project directory: ``` cd /vagrant/log_analysis ```
 ### Run Application
 Log in to VM.
 ```
@@ -48,7 +45,11 @@ Run:
 $ python logs-analysis-rev.py
 ```
 ## Note:
-The order of the SQL queries contained in the list: *query_list* is crucial; *query_list* or elements thereof are passed into a number of functions which depend on the order of the elements in *query_list*. Specific functions that will need to be adjusted if query_list is modified are:
+The database includes three tables:
+- Authors table
+- Articles table
+- Log table
+
 ```
 format_authors_articles()
 format_errors()
