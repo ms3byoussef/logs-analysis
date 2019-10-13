@@ -3,14 +3,9 @@
 import psycopg2
 DB_NAME = "news"
 
-  
-def get_query_result(query):
-    db = psycopg2.connect(database=DB_NAME)
-    cursor = db.cursor()
-    cursor.execute(query)
-    results = cursor.fetchall()
-    db.close()
-    return results  
+
+db = psycopg2.connect(database=DBNAME)
+cursor = db.cursor() 
 
 
 # What are the most popular three articles of all time?
@@ -36,27 +31,23 @@ query_3 = "select t1.date, round((t2.errors::NUMERIC / t1.total) * 100 ,1) as " 
     " group by 1) as t2 where t1.date = t2.date and " \
     "round((t2.errors::NUMERIC / t1.total) * 100 ,1) > 1"
 
-def print_query_results(query_results):
-    print (query_results[1])
-    for index, results (query_results[0]):
-        print (
-            "\t", index+1, "-", results[0],
-            "\t - ", str(results[1]), "views")
+
+print("\n1. What are the most popular three articles of all time?")
+Cursor.execute(query_1)
+for table in Cursor.fetchall():
+    print("  - \"{}\" - {} views".format(table[0], table[1]))
 
 
-def print_error_results(query_results):
-    print (query_results[1])
-    for results in query_results[0]:
-        print ("\t", results[0], "-", str(results[1]) + "% errors")
+print("\n2. Who are the most popular article authors of all time?")
+cursor.execute(query_2)
+for table in cursor.fetchall():
+    print("  - {} - {} views".format(table[0], table[1]))
 
 
-if __name__ == '__main__':
-    # store query results
-    popular_articles_results = get_query_results(query_1), query_1_title
-    popular_authors_results = get_query_results(query_2), query_2_title
-    load_error_days = get_query_results(query_3), query_3_title
+print("\n3. On which days did more than 1% of requests lead to errors?")
+cursor.execute(query_3)
+for table in cursor.fetchall():
+    date = table[0].strftime('%b %d,%Y')
+    print("  - {} - {}% errors".format(date, table[1]))
 
-    # print query results
-    print_query_results(popular_articles_results)
-    print_query_results(popular_authors_results)
-    print_error_results(load_error_days)
+db.close()
