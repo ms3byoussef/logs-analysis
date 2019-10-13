@@ -1,5 +1,8 @@
 #! /usr/bin/env python3
 
+import psycopg2
+DB_NAME = "news"
+
   
 def get_query_result(query):
     db = psycopg2.connect(database=DB_NAME)
