@@ -40,15 +40,6 @@ query_3 = (
     "where perc >= 1")
 
 
-def get_query_result(query):
-    db = psycopg2.connect(database=DB_NAME)
-    cursor = db.cursor()
-    cursor.execute(query)
-    results = cursor.fetchall()
-    db.close()
-    return results  
-
-
 def print_query_results(query_results):
     print (query_results[1])
     for index, results (query_results[0]):
