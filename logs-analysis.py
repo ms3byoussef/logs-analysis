@@ -17,7 +17,7 @@ def get_results(query):
     return cursor.fetchall()
     db.close()
     
-
+result=get_results(query)
 # What are the most popular three articles of all time?
 
 title_1 = ("What are the most popular three articles of all time?")
@@ -67,7 +67,7 @@ SELECT total.day,
         ORDER BY perc DESC;
  """
 
- def print_query_1(query_result)
+ def print_query_1(query_result):
     
 print("\n1. What are the most popular three articles of all time?")
 num=1
@@ -75,7 +75,7 @@ for i in result:
       print('(' + str(num) + ')' + i [0] + " with ' + str(i[1]) + " views")
         num += 1
 
-def print_query_2(query_result)
+def print_query_2(query_result):
     
 print("\n2. Who are the most popular article authors of all time?")
 num=1
