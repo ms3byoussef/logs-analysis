@@ -8,7 +8,7 @@ def connect(DBNAME="news"):
     db = psycopg2.connect('dbname=' + DBNAME)
     cursor = db.cursor()
    
-return db, cursor
+    return db, cursor
 
 def get_results(query):
     """Return query results for given query """
