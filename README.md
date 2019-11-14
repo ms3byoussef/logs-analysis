@@ -18,7 +18,7 @@ Requires Udacity’s Linux-based virtual machine and associated news-website dat
 
 2. Download [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
 
-3. Type following command to your terminal to run this program:
+3. Type following command to my terminal(Git) to run this program:
 
 * To lunch the virtual machine, type  ```vagrant up```, then login with command ```vagrant ssh```
 
