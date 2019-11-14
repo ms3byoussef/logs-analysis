@@ -6,42 +6,26 @@ This is the frist project for the Udacity Full Stack Nanodegree. this a large da
  Udacity's Introduction to Programming Nanodegree.
 ### Installation
 Requires Udacity’s Linux-based virtual machine and associated news-website database.
-Instructions for installing the VM and data follow.
+
 #### Requirements:
 * [VirtualBox](https://www.virtualbox.org/wiki/Downloads)
 * [Vagrant](https://www.vagrantup.com/downloads.html)
 * [Newsdata](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
 
-#### Installing the dependencies and setting up the files:
-1. Install [Vagrant](https://www.vagrantup.com/)
-1. Install [VirtualBox](https://www.virtualbox.org/)
-1. Download the vagrant setup files from [Udacity's Github](https://github.com/udacity/fullstack-nanodegree-vm)
-1. Download the database setup: [data](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip)
-1. Unzip the data to get the newsdata.sql file.
-1. Put the newsdata.sql file into the vagrant directory
-1. Upzip as needed and copy all files into the vagrant directory into a folder called log_analysis
-#### Start the Virtual Machine:
-1. Open Terminal and navigate to the project folders we setup above.
-1. cd into the vagrant directory
-1. Run ``` vagrant up ``` to build the VM for the first time.
-1. Once it is built, run ``` vagrant ssh ``` to connect.
-1. cd into the correct project directory: ``` cd /vagrant/log_analysis ```
-### Run Application
-Log in to VM.
-```
-vagrant ssh
-```
-cd into shared directory:
-```
-$ cd /vagrant
-```
-Commandline should now look like this:
-``` vagrant@vagrant:/vagrant$ ```
 
-Run:
-```
-$ python logs-analysis-rev.py
-```
+### Run Application
+1. Clone the configuration from: https://github.com/udacity/fullstack-nanodegree-vm
+
+2. Download [newsdata.zip](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip).
+
+3. Type following command to your terminal to run this program:
+
+* To lunch the virtual machine, type  ```vagrant up```, then login with command ```vagrant ssh```
+
+* Use ```psql -d news -f newsdata.sql ``` to load data.
+
+* Type ```python3 main.py ``` to run.
+
 ## Note:
 The database includes three tables:
 - Authors table
