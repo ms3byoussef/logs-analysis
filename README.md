@@ -24,7 +24,7 @@ Requires Udacity’s Linux-based virtual machine and associated news-website dat
 
 * Use ```psql -d news -f newsdata.sql ``` to load data.
 
-* Type ```python3 main.py ``` to run.
+* Type ```python3 logs-analysis.py  ``` to run.
 
 ## Note:
 The database includes three tables:
