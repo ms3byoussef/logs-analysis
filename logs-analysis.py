@@ -16,8 +16,8 @@ c = conn.cursor()
 query_title1 ="the most popular three articles of all time:"
 
 #query of the most popular articles
-
-query1="""select articles.title, count(*) as Views 
+#COUNT(log.id)=Views
+query1="""select articles.title, count(log.id) as Views 
 from articles,log 
 where log.path = concat('/article/', articles.slug)
 group by articles.title 
@@ -33,7 +33,7 @@ myresults1=c.fetchall()
 
 #print the query
 
-print("The QUERY 1"+"\n"+query_title1 + "\n")
+print("The QUERY 1"+"\n"+ query_title1 + "\n")
 
 for result in myresults1:
         print('\t' + str(result[0]) + " - " + str(result[1]) + " Views  " + "\n")
@@ -46,7 +46,7 @@ for result in myresults1:
 query_title2 ="the most popular article authors of all time:"
 
 #query of the most popular article authors
-
+#COUNT(log.id)=Views
 query2=""" SELECT authors.name, COUNT(*) As Views 
     FROM authors
     INNER JOIN articles
