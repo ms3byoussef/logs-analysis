@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import psycopg2
 
 #connect to the database
@@ -80,14 +81,12 @@ query_title3 ="On which days did more than 1% of requests lead to errors"
 #query of On which days did more than 1% of requests lead to errors
 
 query3=""" SELECT *
-            FROM (select date(time), ROUND (100.0 * sum (CASE log.status
-            WHEN '200 OK' THEN 0 else 1 end)
-            /COUNT (log.status), 3) AS error 
+            FROM (select date(time), ROUND (100.0 * sum(case when status != '200 OK' then 1 else 0 end)
+            /COUNT (log.status), 4) AS error 
             FROM log
             GROUP BY date(time)
-            ORDER BY error desc) AS subq WHERE error > 1;
-"""
-
+            ORDER BY error desc) AS details WHERE error > 1;
+            """
 #the cursor execute 
 
 c.execute(query3 )
